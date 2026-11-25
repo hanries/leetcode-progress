@@ -1,0 +1,13 @@
+cclass Solution:
+    def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+        if root is None:
+            return 0
+        leftD = self.maxDepth(root.left)
+        rightD = self.maxDepth(root.right)
+        maxD = leftD + rightD
+        return max(maxD, self.diameterOfBinaryTree(root.left), self.diameterOfBinaryTree(root.right)) 
+
+    def maxDepth(self,root) -> int:
+        if root is None:
+            return 0 
+        return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1

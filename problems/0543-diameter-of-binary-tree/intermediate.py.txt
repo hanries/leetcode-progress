@@ -1,0 +1,16 @@
+# User attempt observed in the LeetCode editor on 2026-11-25.
+# The visible editor began with "olution:"; the missing prefix is not reconstructed.
+olution:
+    def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+       return self.maxDiameter(root)[1]
+
+    def maxDiameter(self,root):
+        if root is None:
+            return 0
+        leftDepth = self.maxDiameter(root.left)[0]
+        rightDepth = self.maxDiameter(root.right)[0]
+        leftDiameter = self.maxDiameter(root.left)[1]
+        rightDiameter = self.maxDiameter(root.right)[1]
+        diameter = leftDepth + rightDepth
+
+        return max(leftDepth,rightDepth) + 1 , max(diameter,leftDiameter,rightDiameter)

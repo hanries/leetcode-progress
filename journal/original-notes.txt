@@ -1,0 +1,140 @@
+GRIND PROGRAMMING JOURNAL
+
+Two Sum: 11/6
+the hardest part is to figure out a way to exclude using the same number twice after putting into hash map. 
+solution-> add if statement to check the indices are different
+what i learned: .get(key)-> return value of a hash map
+
+
+Valid Anagram: 11/8, had to use help for any(),all() functions
+loop through first string to put into a dictionary
+and loop through second to see if the dictionary has everything we need
+problem i encountered was handle the case where the dictionary has more elements than the second string needs
+solution: use if not any(dict.values()), which returns true if all values are 0; or i can just handle all the edge cases before
+what i learned: all() any(), all() returns true when all elements return true; any() return true if any element is true
+
+Running Sum of 1d Array 11/9
+problem i encountered: index out of range, since array is fixed-allocation memory, i can’t just create new index position by array[x]. i need to initialize with 
+array = [0] * n, it will be [0,0,0,0,…0]
+solved it by myself other than that though
+
+
+Build Array from Permutation: 11/10
+nothing much it’s pretty simple, O(1) space complexity was interesting
+
+Richest customer wealth: 11/10
+pretty simple, sum() has a time complexity of O(n) under the hood which makes the whole algorithm  O(m x n)
+
+Containing duplicates: 11/10
+use a set, when initialing use set(); and use add() to add
+
+First Unique Character in a String: 11/10
+thought process: we need to store two information for each character: the number of appearance, and it’s first index. and we have to loop through the whole string to do that.  
+The problem i encountered is to find the characters with only one appearance and handle the edge case when there isn’t any character with only one appearance. I figured this out by storing both in a list as the value of the dictionary. 
+To make my code more readable: use the enumerate(), which automatically keep track of the index and the character of an iterable object
+
+
+Move Zeroes 11/11
+my thought is that loop through the list backwards, when see a zero, swap the zero with the number next to it, repeat the process;
+if encountered another zero, couldn’t really figure it out. —> go two loops, main one goes backwards, so no 0’s gets missed, the smaller one go forward, to swap
+one pitfall i fell for: safe index should be updated to the inner loop not the outer loop: safe = j
+the two pointer method is smart, but the key thing is to realize thet moving all non-zero saves a pass
+
+
+Best time to buy and sell stocks: 11/12
+my thought is to use two pointers, cuz we are trying to find the biggest gap between left and right, and use a max variable to keep track of the current max profit. Loop from index 0 forward, if the next price is bigger than the current price, hold buy and move the sell to the next price; when the next price is equal or smaller than the current price, move the buy to the current price and move the sell to the next.
+Really isn’t too hard, just gotta figure out the right logic.
+
+valid parentheses: 11/12
+the hardest part is to make sure the parentheses are closed in the correct order, not just the same type twice. In order to do this, we have to keep accounts  of the index position as well as the character themselves. Im thinking about using stack, once you see closing character, then start popping, if it doesn’t match, return false. And a dictionary to store the mapping information.
+what i learned: stack looks exactly like a list in python and 
+
+Binary Search: 11/13
+pretty intuitive, find midpoint and recurse
+what i learned: need to write the base cases for a recursive function first; tuple is an immutable type, and it’s hashable, a list is not hashable 
+when calling recursion, pass in self. keyword.
+problem with directly using mid point is thet we can’t return the exact index value, so pivot to the approach of creating another method. 
+Nevermind, this is a lot harder than i expected, i’m still not very familiar with the implementation of recursion. 
+Solved it, but the code is very ugly.
+Cleaner version after consulting chat, first we can do it without recursion, second, the recursion could be improved, if we don’t include the mid in recursive steps, we can simplify the base case to just left>right
+self. is only necessary for calling another function within the same class
+
+Climbing stairs: 11/14
+I have done something similar to this before, and i have solved this problem previously. So the method i think is to use dynamic programming. gradually build up the steps. For example, when n= 3, the previous step could either be n = 1 or n = 2. There is only one way to be n = 1 and 2 ways to be n = 2, so there are 1 + 2 = 3 ways to get to 3. The hardest part is to understand the logic clearly. For n =4, we can go from n= 3 or n =2, so there would be 3+2 ‎ = 5ways to go to 4. Not too hard, but remember to handle the edge case when n=1. Use pointers could save some space
+
+Remove Element: 11/14
+this is similar to the problem that finds all the zero’s in an array and move to the back. The way i did that was to use two pointers, scan and write, scan finds the next non-zero, write is always on zero so it marks where to swap. My first answer is correct and use the right approach, but code could be written better. 
+This problem doesn’t require us to keep the remaining elements the same as val so our algorithm could be simplified to simply finding non-val values and move them to the front. And only looping through the array once with no swap guarantees there wouldn’t be double counting.
+
+Remove Duplicates from Sorted Array:11/15
+This is similar to the previous problem i did. My thought is to use two pointers. write stands on unique numbers, scan finds the next unique numbers, k counts the number of unique characters. This one is pretty easy
+
+group anagrams: 11/15
+I think to start, this problem obviously requires using dictionaries, because we want to find anagrams. if a string has the same dictionary of characters then it’s an anagram. But making a separate dictionary for each string seems overkill.
+The algorithm: loop through the input, for each str, make a dictionary, then compare it to the rest of the array, group and remove if find anything, if not, proceed to the next str. do it until the input is empty.
+This algorithm worked but it exceeded time limit: So far the worst time complexity is O(n^2).  it’s clear that the correct answer does not use nested loop. I thought i figured this out: first loop just creating a dictionary with the strs as the key, and their char dict as value. then loop through value to find the final answer. This one is hard, because looping through the value doesn’t give us the strings and it also requires nested loop. we can’t make the dictionaries themselves as values because they aren’t hashable. Is there any other way
+Oh the key is to use tuple() that converts the dictionary into a hashable object
+also list(dict.values()) automatically wraps the values into a list
+
+11/16:
+want to go over group anagram again, revisiting the tuple method. Don’t forget to include .items(), because the count is how we distinguish each character
+Then i want to think about how to implement it with an array of 26 characters. This could save space complexity to O(1). Use ord(), which returns the unicode value of a character. But a list is not hashable either, so tuple() is still needed
+Another method to create keys is to use :
+"".join(sorted(…)), which is the standard way to create sorted characters. Sorted() returns an array, and join() turns it into string again
+Two Sum II:
+I know the hint is to use two pointers from Chatgpt that will make the problem a little easier. 
+nested loop can solve it easily, but how can i improve that to O(n). 
+I re-organized my thought, here is the process: using a running_sum to compare to the target, if running sum is smaller than target, keep increasing right until running sum is greater than or right is the last item, then increase left until the two sum is found. if running sum is greater, decrease right by 1; the hard part about this is how to implement moving left only after right. Finally figured this out after hours, i need two while loops, one loop right to the right, one moves left pointer. 
+Or the easier way to use start and end pointer, i didn’t think of this because i didn’t think it would cover all scenarios
+or we can use a dictionary to keep track of the numbers we have seen and its index, this solves the problem of storing too many indices, since we just need to store the latest one
+
+11/17:
+min stack: this problem is about designing my own stack. Of all the methods, only the minstack() is difficult. My initial thought is to use a min tracker to keep track of the smallest value we have seen, but this needs to get updated when the smallest gets popped out. maybe we can store the smallest values in a stack too. this works, even though space complexity is O(n) in the worst case. If i store value and current min at the same time, this could achieve O(1) as well.  Another thing learned: initialize instance variables in init: other wise they would be treated as class 
+
+11/18:
+search insert position
+the O(log n) is a clue that we should use binary search
+if the number is not in the array, then the number should be inserted at left. Solved first try
+Longest Substring Without Repeating Characters:
+this is a classic sliding window problem since we are trying to find the substring
+The algorithm should have a left and a right pointer.
+Every step we check if left and right are the same, if they are left adds one, if not right adds one. we calculate the current max by using right - left + 1 before moving left. We need to way to make sure there is no repetition within the interval. Hashset? Hashset works, Think about sliding window, we only need to care about what is in the window, and nothing else. By resetting the hashset everytime we move left, we can solve this. 
+Intuitively time complexity could be improved. Right shouldn’t need to reset to left every time. -> we can just find the largest window size, and move the entire window to the right, the window itself should be a set.  This works, If we use ASCII, then we can further simplify, this solution O(2n) at worst. No nested loop
+
+11/19: search a 2d matrix
+I think this problem is pretty intuitive, apply binary search to both rows and columns. I’m thinking do a binary search on the first number of each row first, to determine the row. The caveat is that for the rows, the number doesn’t have to match an exact row. Solved it, but had to add in another if statement to include the cases where it’s on the same row as mid_row. 
+Simpler approach, this is very smart, since the matrix is sorted, we can convert it into a 1D array, by using the normal binary search algorithm from 0 to MxN -1 
+
+11/20: reverse linked list
+what makes this hard is that each node only stores its val and the next value. Intuitively, i can traverse to the end of the list first. Had to use gemini to fix my while loop condition, while temp is not None, instead of temp.next, i still don’t get it though. And I still need to figure out how to assemble a Linked list together, because having one variable doesn’t move with the list. So I think the idea is to have a dummy head, where dummy next is the beginning of the new linked list, and the ans moves through the arr. This is a lot harder than i expected, since i am pretty unfamiliar with this datastructure. Ended up creating dummy, which points to ans, and points to temp. So got it done with 3 variables.
+But the optimal approach is to reverse it in place, using prev to keep track of the prev one, curr for current one, next, for next one. the key understanding is that only REFERENCE is changed when moving pointers, the object is the same
+
+11/21: Merge Two Sorted Linked Lists 
+natural follow up from the previous question. Intuitively we need three pointers, one for each list and then a dummy that just points to the beginning of the answer. Problem 1: what does dummy.next point to? Should be the beginning of the answer, so list1? but list1 itself doesn’t get changed. We need to create a new ListNode for every new ans.
+Actually i don’t need to create a new linked list. I just need to make sure a dummy always points at the beginning of the answer. ans and top can move around freely. A key misunderstanding i have was i thought top = top.next would be fine, since top was initiailized on the “top” list, but each node only stores its own value and the next reference, it doesn’t care where it sits at. 
+Misunderstanding 2: at the beginning, ans should be = dummy, since ans is a pointer, and dummy.next should always be the beginning of the answer.
+variables are like labels. they point at objects, but a single object could be reachable from different labels.
+
+11/22: Middle of the Linked List
+I want to first review the linked list problems again. I remember the way to find the middle was to use two pointers, one moves once per step, another one moves twice per step, so  the slower one would always be the middle of the examined list. The only hard part is to figure out terminal condition -> fast.next should be none. but we can’t just access .next if fast itself is is none: solved it, just check fast first
+Linked list cycle:
+I think this problem also uses a similar approach, if the fast one catches up with slow, then there is a cylcle. But what is the end condition? fast != none. Use the exact same end condition
+remove linked list element:
+We will use a dummy node at the beginning. Two pointers, ans and curr. curr finds node that ans points to, but edge case. If the last node is val, we need to remove it from the linked list too. Slightly harder, solved it too
+
+11/23: remove nth list from end of the list
+I think we should use two pointers, n nodes apart, the end pointer would start moving first, then the ans pointer starts moving after n-2 nodes has passed, and when end reaches the end, the ans node would skip the next node and continue the rest. If we let ans start at the dummy node, end start at head, then the gap is already 1, which is n = 2. Like usual, the edge cases when ans == none. Solved it, the hardest part was to count the correct number of offsets
+
+11/24: invert binary tree
+I’m not very familiar with this data structure, but i think the method is to depth first. i can only think of doing this with recursion. At each node, the base cases are if the node itself is none, -> return that node
+if the node either leaf is none -> swap left and right. If both leaves have are valid, the left should be the same method done on the right one. Without recursion, we can use a stack, which is actually the data structure that recursion implicitly uses. Solved it
+Balanced binary tree:
+we need a step counter in the recursion, I’m thinking including in the arguments, but what should the recursive function return, boolean or the step count. This is taking a lot longer than I expected to figure out. What I want the algorithm to do: At each node, compare the depthL and depthR, is the difference is greater than 1, than return false. Now how should depthL and depthR be calculated? We can’t just do keep passing the same two variables, because they should be relative to the single parent node. So we +1 when the function returns. But what should the main function include? Another recursive function? Wouldn’t that be wasting resources. But we need to a way to convert the counts into a boolean output. I feel like i haven’t touched the root of the problem. What do want from each node? How deep is your left leaf and how deep is your right? 
+
+11/25:
+Maximum Depth of Binary Tree:
+lowkey solved this from my memory
+Same tree:
+I’m thinking about a recursive approach. What should the function do? At each node, the function compares the two nodes, making sure than are the same, and then it will go to the left and then the right. return true if we reach the end. If two nodes are the same, then compare the leafs below. The core mechanism should work, but i need to be more specific about the conditions for true/false. If both nodes reach the end-> both are None, return true; if one node reach None, one is not, return false
+Diameter of a binary tree:
+The intuition is for every new node that the function see, calculate the max depth at the left and right, then that would be the max-diameter at the node.So what should the function do? At each node, if its none, that means the tree has reached the end, and diameter should not be increased, return 0; if it has value, then traverse left and right, use the maxDepth algorithm, then compare that to the current maxDepth. I want to use a modular design, maxDepth() returns the left and right maxDepth at a certain node; the main function should also be recursive, it should answer the question what is the maxDiameter at this node. This solution works but it recurses through the tree twice, there should be more efficient solution. Instead of having the helper return maxdepth at each node and the main return maxDiameter at each node, the helper should be able to do both. At each node, we compare the maxDiameter of the the left, the maxDiameter of the right, or the the current maxDiameter, and return the largest of the three. But to calculate maxDiameter, we can’t get around maxDepth(). I can’t really think of how to optimize this approach, what ever I do i still need to use a helper function. Or do i. How else am i going to get the depth of the left node and the right node. The main problem is that when we are recursing, the max diameter is not the same as the depth. because max diameter could be smaller as the recursion goes up. I think the problem is that i’m haven’t figured out all the cases. If the node is none-> return 0, its the end of the tree; if the node has a left tree but the right is none, return 1 + maxDepth(left); if the node has a right tree, no left tree, return 1+maxDepth(right). So the main function can be perfectly iterative. 
