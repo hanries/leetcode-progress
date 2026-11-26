@@ -8,7 +8,7 @@ I want to be able to come back to these notes and see what I was thinking, inclu
 
 ## What's here
 
-My [original journal](journal/original-notes.txt) covers November 6 to 25. I've kept the wording as I wrote it, so some entries have typos or explanations I later realized were wrong. Those corrections are in [separate review notes](journal/review-notes.md).
+My [original journal](journal/original-notes.txt) covers November 6 to 25. My November 26 entry is on the [Binary Tree Paths page](problems/0257-binary-tree-paths/). I've kept the wording as I wrote it, so some entries have typos or explanations I later realized were wrong. Those corrections are in [separate review notes](journal/review-notes.md).
 
 Each problem has its own page with my thought process. I've included my original code where I still have it. Most of the earlier entries are notes only; I haven't filled in missing code with a new solution and called it my original attempt.
 
@@ -16,7 +16,7 @@ I used ChatGPT and, for some problems, Gemini when I got stuck. I keep the solut
 
 ## Problems I've worked on
 
-There are 31 problems here, with a second entry for Group Anagrams when I revisited it. Dates follow my original notes; the year is treated as 2026 based on the conversation where I shared them.
+There are 32 problems here, with a second entry for Group Anagrams when I revisited it. Dates follow my original notes; the year is treated as 2026 based on the conversation where I shared them.
 
 | Problem | Journal date | Contents |
 |---|---|---|
@@ -51,6 +51,7 @@ There are 31 problems here, with a second entry for Group Anagrams when I revisi
 | [104. Maximum Depth of Binary Tree](problems/0104-maximum-depth-of-binary-tree/) | 11/25 | Original notes |
 | [100. Same Tree](problems/0100-same-tree/) | 11/25 | Original notes and code |
 | [543. Diameter of Binary Tree](problems/0543-diameter-of-binary-tree/) | 11/25 | Original notes and code; assisted revision |
+| [257. Binary Tree Paths](problems/0257-binary-tree-paths/) | 11/26 | Original notes and code; assisted bottom-up cleanup |
 
 ## How I keep track of attempts
 

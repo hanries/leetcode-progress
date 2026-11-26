@@ -1,0 +1,19 @@
+# Paste formatting normalized; algorithm and variable names preserved.
+class Solution:
+    def binaryTreePaths(self, root: TreeNode | None) -> list[str]:
+        if root is None:
+            return root
+        paths = []
+        pathLeft = self.binaryTreePaths(root.left)
+        pathRight = self.binaryTreePaths(root.right)
+        if pathLeft:
+            for path in pathLeft:
+                pathL = str(root.val) + "->" + path
+                paths.append(pathL)
+        if pathRight:
+            for path in pathRight:
+                pathR = str(root.val) +"->" + path
+                paths.append(pathR)
+        if not paths:
+            paths = [str(root.val)]
+        return paths
