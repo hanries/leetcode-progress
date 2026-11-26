@@ -1,14 +1,22 @@
-# LeetCode Progress
+# My LeetCode journal
 
-A programming journal tracking original reasoning, attempts, mistakes, and lessons learned. Original notes stay intact; assisted revisions are labeled separately.
+I'm practicing LeetCode in Python and writing down how I think through each problem. I usually start with whatever approach makes sense to me, try to get it working, then look at what I could do better. Some problems take much longer than I expect.
 
-## Journal
+The part I keep getting stuck on is turning an idea into code. With Diameter of Binary Tree, I figured the helper should calculate both height and diameter, but I didn't know how to return both. Learning that Python could return a tuple cleared up something I'd spent hours trying to work around.
 
-[Complete original journal](journal/original-notes.txt) covers November 6–25, from Two Sum through binary trees. Earlier entries currently contain notes only; code is added only when recovered from an original source. Dates were supplied without a year; 2026 is inferred from the conversation.
+I want to be able to come back to these notes and see what I was thinking, including the approaches I abandoned too early. I also want to redo problems without looking at my old solutions and see whether I understand them better.
 
-## All problems
+## What's here
 
-31 problems, with 32 dated entries including the Group Anagrams revisit. Each problem has its own page.
+My [original journal](journal/original-notes.txt) covers November 6 to 25. I've kept the wording as I wrote it, so some entries have typos or explanations I later realized were wrong. Those corrections are in [separate review notes](journal/review-notes.md).
+
+Each problem has its own page with my thought process. I've included my original code where I still have it. Most of the earlier entries are notes only; I haven't filled in missing code with a new solution and called it my original attempt.
+
+I used ChatGPT and, for some problems, Gemini when I got stuck. I keep the solutions I learned with help separate from my own attempts. The assisted revisions include explanations and complexity analysis so I can work through why they work.
+
+## Problems I've worked on
+
+There are 31 problems here, with a second entry for Group Anagrams when I revisited it. Dates follow my original notes; the year is treated as 2026 based on the conversation where I shared them.
 
 | Problem | Journal date | Contents |
 |---|---|---|
@@ -44,13 +52,13 @@ A programming journal tracking original reasoning, attempts, mistakes, and lesso
 | [100. Same Tree](problems/0100-same-tree/) | 11/25 | Original notes and code |
 | [543. Diameter of Binary Tree](problems/0543-diameter-of-binary-tree/) | 11/25 | Original notes and code; assisted revision |
 
-## Reading the versions
+## How I keep track of attempts
 
-- `original.py.txt`: original user code, with typos preserved.
-- `intermediate.py.txt`: a later user attempt, when available.
-- `revised.py`: an assisted alternative or optimization.
-- Review sections: later technical explanations, not part of the original reasoning.
+- `original.py.txt` is my original code, including any typos. I keep it as text so an unfinished attempt doesn't look like a ready-to-run solution.
+- `intermediate.py.txt` is a later attempt I made while working through the same problem.
+- `revised.py` is a solution or alternative I learned with help.
+- The review sections explain what I learned afterward, separately from what I was thinking at the time.
 
-A correct algorithm and an accepted submission are separate milestones. Only observed LeetCode outcomes are recorded; local checks do not establish LeetCode acceptance.
+I record submission results when I have them. Passing local checks doesn't mean a solution was accepted on LeetCode.
 
-[Technical corrections to earlier notes](journal/review-notes.md) · [Template for future entries](ENTRY_TEMPLATE.md)
+I'll use this [entry template](ENTRY_TEMPLATE.md) for future problems and revisits.
